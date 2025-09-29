@@ -36,17 +36,21 @@ const mapPoints = [
   },
 ];
 
+const mapBackgroundImage = PlaceHolderImages.find(img => img.id === 'map-background');
+
 export function MemoryLaneMap() {
   return (
     <div className="w-full h-full flex items-center justify-center">
         <div className="relative w-[500px] h-[300px] rounded-2xl shadow-inner overflow-hidden border-2 border-dashed border-primary/50">
-            <Image
-                src="https://images.unsplash.com/photo-1543699539-a699818793b2?q=80&w=2070&auto=format&fit=crop"
-                alt="Vintage map background"
-                fill
-                className="object-cover opacity-30"
-                data-ai-hint="vintage map"
-            />
+            {mapBackgroundImage && (
+                <Image
+                    src={mapBackgroundImage.imageUrl}
+                    alt={mapBackgroundImage.description}
+                    fill
+                    className="object-cover opacity-30"
+                    data-ai-hint={mapBackgroundImage.imageHint}
+                />
+            )}
             
             <TooltipProvider>
                 {mapPoints.map(point => (

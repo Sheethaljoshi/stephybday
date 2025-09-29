@@ -41,6 +41,12 @@
       "description": "A memory of a trip",
       "imageUrl": "https://images.unsplash.com/photo-1532664032179-36d09349884a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxmcmllbmRzJTIwdHJpcHxlbnwwfHx8fDE3NTkxNTI5NTl8MA&ixlib=rb-4.0.3&q=80&w=1080",
       "imageHint": "friends trip"
+    },
+    {
+      "id": "map-background",
+      "description": "A vintage map background",
+      "imageUrl": "https://images.unsplash.com/photo-1543699539-a699818793b2?q=80&w=2070&auto=format&fit=crop",
+      "imageHint": "vintage map"
     }
   ]
 }
