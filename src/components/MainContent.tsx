@@ -14,11 +14,19 @@ import { MemoryLaneMap } from './MemoryLaneMap';
 
 const memeImages = PlaceHolderImages.filter(img => img.id.startsWith('meme'));
 const throwbackImage = PlaceHolderImages.find(img => img.id === 'throwback');
+const wishImages = PlaceHolderImages.filter(img => img.id.startsWith('wish'));
+
 
 const memeCaptions: { [key: string]: string } = {
   meme1: "This is so us trying to figure out plans.",
   meme2: "Her face when she sees a cute dog.",
   meme3: "When the gossip is just too good.",
+};
+
+const wishCaptions: { [key: string]: string } = {
+  wish1: "Wishing you a lifetime of happiness, laughter, and endless adventures. Happy Birthday!",
+  wish2: "To our dearest friend, may your future be as bright and beautiful as your spirit. We love you!",
+  wish3: "Happy Birthday! Never forget how much you're loved. Here's to many more years of amazing memories.",
 };
 
 
@@ -39,6 +47,37 @@ export function MainContent() {
       </header>
       
       <main className="w-full max-w-4xl mx-auto p-4 md:p-8 space-y-12">
+
+        <section className="bg-card rounded-2xl shadow-xl border p-8 md:p-12">
+            <div className="text-center mb-8">
+                <h2 className="font-headline text-4xl text-primary-foreground flex items-center justify-center gap-3"><MessageSquareHeart className="text-primary-foreground h-8 w-8"/>Wishes From Your Loved Ones</h2>
+                <p className="text-muted-foreground mt-2 max-w-xl mx-auto">A few messages from the people who love you most, to carry with you always.</p>
+            </div>
+             <Carousel className="w-full max-w-3xl mx-auto" opts={{ loop: true }}>
+               <CarouselContent>
+                 {wishImages.map((wish) => (
+                   <CarouselItem key={wish.id} className="text-center">
+                     <div className="p-1">
+                         <CardContent className="flex aspect-[16/10] items-center justify-center p-0 relative rounded-lg overflow-hidden border">
+                           <Image
+                             src={wish.imageUrl}
+                             alt={wish.description}
+                             fill
+                             data-ai-hint={wish.imageHint}
+                             className="object-cover w-full h-full"
+                           />
+                            <div className="absolute inset-0 flex items-center justify-center p-8 bg-black/50">
+                             <p className="font-headline text-white text-2xl md:text-3xl leading-snug text-center drop-shadow-md">{wishCaptions[wish.id]}</p>
+                         </div>
+                         </CardContent>
+                     </div>
+                   </CarouselItem>
+                 ))}
+               </CarouselContent>
+               <CarouselPrevious />
+               <CarouselNext />
+             </Carousel>
+        </section>
 
         {/* --- Letters Section --- */}
         <section className="space-y-8">
@@ -194,3 +233,5 @@ export function MainContent() {
     </div>
   );
 }
+
+    

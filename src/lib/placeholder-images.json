@@ -47,6 +47,24 @@
       "description": "A vintage map background",
       "imageUrl": "https://images.unsplash.com/photo-1543699539-a699818793b2?q=80&w=2070&auto=format&fit=crop",
       "imageHint": "vintage map"
+    },
+    {
+      "id": "wish1",
+      "description": "First wish image",
+      "imageUrl": "https://images.unsplash.com/photo-1529551739521-27493414a836?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxzaWxob3VldHRlJTIwZnJpZW5kc3xlbnwwfHx8fDE3NTkyNTI0ODB8MA&ixlib=rb-4.0.3&q=80&w=1080",
+      "imageHint": "friends silhouette"
+    },
+    {
+      "id": "wish2",
+      "description": "Second wish image",
+      "imageUrl": "https://images.unsplash.com/photo-1508898578284-7793c18b2c8c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxocmllbmRzJTIwbGF1Z2hpbmd8ZW58MHx8fHwxNzU5MjUyNDgwfDA&ixlib=rb-4.0.3&q=80&w=1080",
+      "imageHint": "friends laughing"
+    },
+    {
+      "id": "wish3",
+      "description": "Third wish image",
+      "imageUrl": "https://images.unsplash.com/photo-1600727039599-ec82c356379c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxocmllbmRzJTIwaHVnfGVufDB8fHx8MTc1OTI1MjQ4MHww&ixlib=rb-4.0.3&q=80&w=1080",
+      "imageHint": "friends hug"
     }
   ]
 }
