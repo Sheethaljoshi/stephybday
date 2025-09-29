@@ -8,9 +8,9 @@ import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Card, CardContent } from '@/components/ui/card';
-import { Camera, Mail, Sparkles, Wand2, MessageSquareHeart, Heart, GitCommit, ChevronDown, LockKeyhole, FileText, ArrowLeft } from 'lucide-react';
-import { AiImageSection } from './AiImageSection';
+import { Camera, Mail, Sparkles, Wand2, MessageSquareHeart, Heart, GitCommit, ChevronDown, LockKeyhole, FileText, ArrowLeft, MapPin } from 'lucide-react';
 import { LetterToStephyPage } from './LetterToStephyPage';
+import { MemoryLaneMap } from './MemoryLaneMap';
 
 const memeImages = PlaceHolderImages.filter(img => img.id.startsWith('meme'));
 const throwbackImage = PlaceHolderImages.find(img => img.id === 'throwback');
@@ -94,11 +94,12 @@ export function MainContent() {
                 <span className="bg-background px-4 text-muted-foreground"><GitCommit /></span>
             </div>
         </div>
-
-        {/* --- Meme Section --- */}
-        <section className="space-y-8 text-center">
-             <h2 className="font-headline text-4xl text-primary-foreground flex items-center justify-center gap-3"><Sparkles className="text-primary-foreground h-8 w-8"/>Meme Hall of Fame</h2>
-             <p className="text-muted-foreground mt-2 max-w-xl mx-auto">A collection of moments that live in our heads rent-free, because normal photos are too mainstream.</p>
+        
+        <section className="bg-card rounded-2xl shadow-xl border p-8 md:p-12">
+            <div className="text-center mb-8">
+                <h2 className="font-headline text-4xl text-primary-foreground flex items-center justify-center gap-3"><Sparkles className="text-primary-foreground h-8 w-8"/>Meme Hall of Fame</h2>
+                <p className="text-muted-foreground mt-2 max-w-xl mx-auto">A collection of moments that live in our heads rent-free, because normal photos are too mainstream.</p>
+            </div>
              <Carousel className="w-full max-w-xl mx-auto" opts={{ loop: true }}>
                <CarouselContent>
                  {memeImages.map((meme) => (
@@ -136,10 +137,8 @@ export function MainContent() {
             </div>
         </div>
 
-
-        {/* --- Throwback & AI Section --- */}
-        <section className="grid md:grid-cols-5 gap-8 items-center">
-            <div className="md:col-span-2 text-center md:text-left">
+        <section className="grid md:grid-cols-2 gap-8 items-center">
+            <div className="text-center md:text-left">
                 <h2 className="font-headline text-4xl text-primary-foreground flex items-center justify-center md:justify-start gap-3"><Camera className="h-8 w-8"/> A Moment in Time</h2>
                 <p className="text-muted-foreground mt-2">Let's take a trip down memory lane... Remember this?</p>
                 
@@ -176,14 +175,14 @@ export function MainContent() {
                     </Dialog>
                 )}
             </div>
-
-            <div className="md:col-span-3 bg-card rounded-lg p-8 shadow-xl border text-center">
-                <h3 className="font-headline text-4xl text-primary-foreground flex items-center gap-3 justify-center"><Wand2 className="text-primary-foreground h-8 w-8"/> AI Time Machine</h3>
-                <p className="text-muted-foreground mt-2 max-w-md mx-auto">Curious to see what 50 years does to us? Upload a group photo and let the AI work its magic!</p>
-                <div className="mt-6 max-w-md mx-auto">
-                    <AiImageSection />
+            
+            <section className="bg-card rounded-2xl shadow-xl border p-8 md:p-12 text-center h-full flex flex-col justify-center">
+                <div className="text-center mb-8">
+                    <h2 className="font-headline text-4xl text-primary-foreground flex items-center justify-center gap-3"><MapPin className="text-primary-foreground h-8 w-8"/> Memory Lane Map</h2>
+                    <p className="text-muted-foreground mt-2 max-w-xl mx-auto">A trip down memory lane, charting the places and moments that defined our friendship.</p>
                 </div>
-            </div>
+                <MemoryLaneMap />
+            </section>
         </section>
 
       </main>
@@ -195,5 +194,3 @@ export function MainContent() {
     </div>
   );
 }
-
-    

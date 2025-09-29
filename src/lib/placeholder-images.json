@@ -9,7 +9,7 @@
     {
       "id": "meme2",
       "description": "Second meme for the carousel",
-      "imageUrl": "https://images.unsplash.com/photo-1593301008948-b1512eab0ece?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxyZWxhdGFibGUlMjBxdW90ZXxlbnwwfHx8fDE3NTkxNTIzMTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1593301008948-b1512eab0ece?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxyZWxhdGFibGUlMjBxdW90ZXxlbnwwfHx8fDE3NTkxNTIzMTZ8MA&ixlibrb-4.1.0&q=80&w=1080",
       "imageHint": "relatable quote"
     },
     {
@@ -23,6 +23,24 @@
       "description": "A throwback picture of friends",
       "imageUrl": "https://images.unsplash.com/photo-1588351440168-c89f3afae9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxmcmllbmRzJTIwcG9zaW5nfGVufDB8fHx8MTc1OTE1MjMxNnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "friends posing"
+    },
+    {
+      "id": "map-school",
+      "description": "A memory of school",
+      "imageUrl": "https://images.unsplash.com/photo-156078547A-1DF210452969?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxhbm5veWluZyUyMGNsYXNzcm9vbXxlbnwwfHx8fDE3NTkxNTI5ODR8MA&ixlib=rb-4.0.3&q=80&w=1080",
+      "imageHint": "annoying classroom"
+    },
+    {
+      "id": "map-cafe",
+      "description": "A memory of a cafe",
+      "imageUrl": "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxyZWxhdGFibGUlMjBxdW90ZXxlbnwwfHx8fDE3NTkxNTI5NTl8MA&ixlib=rb-4.0.3&q=80&w=1080",
+      "imageHint": "relatable quote"
+    },
+    {
+      "id": "map-trip",
+      "description": "A memory of a trip",
+      "imageUrl": "https://images.unsplash.com/photo-1532664032179-36d09349884a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxmcmllbmRzJTIwdHJpcHxlbnwwfHx8fDE3NTkxNTI5NTl8MA&ixlib=rb-4.0.3&q=80&w=1080",
+      "imageHint": "friends trip"
     }
   ]
 }
