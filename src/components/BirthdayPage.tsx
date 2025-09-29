@@ -1,53 +1,84 @@
+
 "use client";
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { MainContent } from '@/components/MainContent';
 import { Confetti } from '@/components/Confetti';
 import { useToast } from '@/hooks/use-toast';
-import { ArrowRight, Book, Film, Gift, Heart, Music, Users } from 'lucide-react';
+import { ArrowRight, Book, Film, Gift, Heart, Lock, Music, Users, PartyPopper } from 'lucide-react';
 
-const CORRECT_PASSWORD = "6BANGRYBIRDSCHIQUITITAM4RIAREKHAMAAM!";
+const clueAnswers = {
+    start: "6B",
+    cartoon: "ANGRYBIRDS",
+    song: "CHIQUITITA",
+    friend: "MARIA",
+    teacher: "REKHAMAAM"
+};
 
 const clues = [
-    { icon: Book, text: "Where did our friendship officially start?", hint: "6B 📚" },
-    { icon: Film, text: "Which cartoon character do we always associate with you?", hint: "Angry Birds 🐦" },
-    { icon: Music, text: "What song did you sing at Arts Fest that we all loved?", hint: "Chiquitita 🎶" },
-    { icon: Users, text: "Who is our friend that’s never been in our class yet?", hint: "Maria 💕" },
-    { icon: Heart, text: "Which teacher loved you the most?", hint: "Teacher ❤️" },
+    { id: 'start', icon: Book, text: "Where did our friendship officially start?", hint: "6B 📚", answer: clueAnswers.start },
+    { id: 'cartoon', icon: Film, text: "Which cartoon character do we always associate with you?", hint: "Angry Birds 🐦", answer: clueAnswers.cartoon },
+    { id: 'song', icon: Music, text: "What song did you sing at Arts Fest that we all loved?", hint: "Chiquitita 🎶", answer: clueAnswers.song },
+    { id: 'friend', icon: Users, text: "Who is our friend that’s never been in our class yet?", hint: "Maria 💕", answer: clueAnswers.friend },
+    { id: 'teacher', icon: Heart, text: "Which teacher loved you the most?", hint: "Teacher ❤️", answer: clueAnswers.teacher },
 ];
 
 export function BirthdayPage() {
-    const [password, setPassword] = useState('');
+    const [answers, setAnswers] = useState<Record<string, string>>({
+        start: "",
+        cartoon: "",
+        song: "",
+        friend: "",
+        teacher: ""
+    });
+    
+    const [correctAnswers, setCorrectAnswers] = useState<Record<string, boolean>>({});
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [showConfetti, setShowConfetti] = useState(false);
     const { toast } = useToast();
 
-    const handlePasswordSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        if (password.toUpperCase().replace(/\s/g, '') === CORRECT_PASSWORD) {
-            setShowConfetti(true);
-            setTimeout(() => {
-                setIsAuthenticated(true);
-            }, 1000); // Wait for confetti to be visible
+    const allCorrect = useMemo(() => {
+        return clues.every(clue => correctAnswers[clue.id]);
+    }, [correctAnswers]);
+
+
+    const handleInputChange = (id: string, value: string) => {
+        setAnswers(prev => ({ ...prev, [id]: value }));
+    };
+
+    const handleClueSubmit = (id: string, answer: string) => {
+        if (answers[id].toUpperCase().replace(/\s/g, '') === answer) {
+            setCorrectAnswers(prev => ({ ...prev, [id]: true }));
+            toast({
+                title: "Correct!",
+                description: "You're one step closer!",
+                className: "bg-green-100 border-green-300 text-green-800"
+            });
         } else {
             toast({
-                title: "Oops!",
-                description: "That's not the right password. Try combining the answers!",
+                title: "Not quite!",
+                description: "Give it another shot!",
                 variant: "destructive",
             });
-            setPassword('');
         }
     };
+    
+    const handleUnlock = () => {
+         setShowConfetti(true);
+         setTimeout(() => {
+             setIsAuthenticated(true);
+         }, 1000); // Wait for confetti to be visible
+    }
 
     if (isAuthenticated) {
         return <MainContent />;
     }
 
     return (
-        <div className="min-h-screen w-full flex items-center justify-center p-4 bg-background">
+        <div className="min-h-screen w-full flex items-center justify-center p-4 bg-background font-body">
             {showConfetti && <Confetti />}
             <main className="w-full max-w-2xl">
               <Card className="shadow-2xl animate-in fade-in zoom-in-95 duration-500">
@@ -55,34 +86,51 @@ export function BirthdayPage() {
                       <div className="mx-auto bg-primary/20 p-3 rounded-full mb-4 w-fit">
                           <Gift className="h-10 w-10 text-primary-foreground" />
                       </div>
-                      <CardTitle className="font-headline text-4xl">Birthday Time Capsule</CardTitle>
-                      <CardDescription className="text-lg">A special gift for a special friend. But first, a test of your memory!</CardDescription>
+                      <CardTitle className="font-headline text-4xl">The Friendship Gauntlet</CardTitle>
+                      <CardDescription className="text-lg">Prove your worthiness to unlock your birthday surprise!</CardDescription>
                   </CardHeader>
                   <CardContent>
                       <div className="space-y-4 mb-6">
-                          {clues.map((clue, index) => (
-                              <div key={index} className="flex items-start space-x-4 p-3 bg-card-foreground/5 rounded-lg">
-                                  <clue.icon className="h-6 w-6 text-primary-foreground mt-1 flex-shrink-0" />
-                                  <div>
-                                      <p className="font-semibold">{clue.text}</p>
-                                      <p className="text-sm text-muted-foreground">{clue.hint}</p>
+                          {clues.map((clue) => (
+                              <div 
+                                key={clue.id} 
+                                className={`p-4 rounded-lg transition-all duration-300 ${correctAnswers[clue.id] ? 'bg-green-100 border border-green-300' : 'bg-card-foreground/5'}`}
+                              >
+                                  <div className="flex items-start space-x-4">
+                                      <clue.icon className="h-8 w-8 text-primary-foreground mt-1 flex-shrink-0" />
+                                      <div>
+                                          <p className="font-semibold text-lg">{clue.text}</p>
+                                          <p className="text-sm text-muted-foreground">{clue.hint}</p>
+                                      </div>
                                   </div>
+                                  {!correctAnswers[clue.id] && (
+                                    <form onSubmit={(e) => { e.preventDefault(); handleClueSubmit(clue.id, clue.answer); }} className="mt-3 flex gap-2">
+                                          <Input
+                                              type="text"
+                                              placeholder="Your answer..."
+                                              value={answers[clue.id]}
+                                              onChange={(e) => handleInputChange(clue.id, e.target.value)}
+                                              className="text-base h-11"
+                                          />
+                                          <Button type="submit" size="icon" className="h-11 w-11 flex-shrink-0">
+                                            <ArrowRight className="h-5 w-5" />
+                                          </Button>
+                                    </form>
+                                  )}
+                                  {correctAnswers[clue.id] && (
+                                      <div className="mt-2 text-green-700 font-bold flex items-center gap-2">
+                                          <PartyPopper size={20} />
+                                          <span>Correct! The memory lives on!</span>
+                                      </div>
+                                  )}
                               </div>
                           ))}
                       </div>
-                      <form onSubmit={handlePasswordSubmit} className="space-y-4">
-                          <Input
-                              type="password"
-                              placeholder="Enter the secret code..."
-                              value={password}
-                              onChange={(e) => setPassword(e.target.value)}
-                              className="text-center text-lg h-12"
-                          />
-                          <Button type="submit" className="w-full text-lg h-12 group bg-accent text-accent-foreground hover:bg-accent/90">
-                              Unlock Your Surprise
-                              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                          </Button>
-                      </form>
+                      
+                      <Button onClick={handleUnlock} disabled={!allCorrect} className="w-full text-lg h-12 group bg-accent text-accent-foreground hover:bg-accent/90 disabled:bg-muted disabled:text-muted-foreground disabled:cursor-not-allowed">
+                          {allCorrect ? 'Unlock Your Surprise!' : 'Solve all clues to unlock'}
+                          {allCorrect ? <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" /> : <Lock className="ml-2 h-5 w-5" />}
+                      </Button>
                   </CardContent>
               </Card>
             </main>
