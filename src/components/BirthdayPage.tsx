@@ -5,10 +5,21 @@ import { useState, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
 import { MainContent } from '@/components/MainContent';
 import { Confetti } from '@/components/Confetti';
 import { useToast } from '@/hooks/use-toast';
-import { ArrowRight, Book, Film, Gift, Heart, Lock, Music, Users, PartyPopper } from 'lucide-react';
+import { ArrowRight, Book, Film, Gift, Heart, HelpCircle, Lock, Music, Users, PartyPopper } from 'lucide-react';
 
 const clueAnswers = {
     start: "6B",
@@ -19,11 +30,11 @@ const clueAnswers = {
 };
 
 const clues = [
-    { id: 'start', icon: Book, text: "Where did our friendship officially start?" },
-    { id: 'cartoon', icon: Film, text: "Which cartoon character do we always associate with you?" },
-    { id: 'song', icon: Music, text: "What song did you sing at Arts Fest that we all loved?" },
-    { id: 'friend', icon: Users, text: "Who is our friend that’s never been in our class yet?" },
-    { id: 'teacher', icon: Heart, text: "Which teacher loved you the most?" },
+    { id: 'start', icon: Book, text: "Where did our friendship officially start?", hint: "It's a two-character answer. Think class and division! 📚", confirmTitle: "Are you sure?", confirmText: "This is where it all began! You should know this one." },
+    { id: 'cartoon', icon: Film, text: "Which cartoon character do we always associate with you?", hint: "Red, yellow, black... and always furious.", confirmTitle: "Really?", confirmText: "You're so close! Try to picture your own angry face." },
+    { id: 'song', icon: Music, text: "What song did you sing at Arts Fest that we all loved?", hint: "It's by ABBA!", confirmTitle: "Gimme! Gimme! Gimme a hint?", confirmText: "We know you're the 'Dancing Queen', but do you remember this one?" },
+    { id: 'friend', icon: Users, text: "Who is our friend that’s never been in our class yet?", hint: "You don't need a clue, figure this one out yourself.", confirmTitle: "No hints for this one!", confirmText: "Seriously, this is a giveaway. You got this!" },
+    { id: 'teacher', icon: Heart, text: "Which teacher loved you the most?", hint: "Our mean Malayalam class teacher.", confirmTitle: "Need a teacher's pet hint?", confirmText: "Think back to the strictest teacher... who secretly had a soft spot for you." },
 ];
 
 export function BirthdayPage() {
@@ -35,9 +46,12 @@ export function BirthdayPage() {
         teacher: ""
     });
     
-    const [correctAnswers, setCorrectAnswers] = useState<Record<string, boolean>>({});
+    const [correctAnswers, setCorrectAnswers] =useState<Record<string, boolean>>({});
+    const [revealedHints, setRevealedHints] = useState<Record<string, boolean>>({});
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [showConfetti, setShowConfetti] = useState(false);
+    const [showHintConfetti, setShowHintConfetti] = useState(false);
+
     const { toast } = useToast();
 
     const allCorrect = useMemo(() => {
@@ -66,6 +80,14 @@ export function BirthdayPage() {
         }
     };
     
+    const handleRevealHint = (id: string) => {
+        setRevealedHints(prev => ({ ...prev, [id]: true }));
+        setShowHintConfetti(true);
+        setTimeout(() => {
+            setShowHintConfetti(false);
+        }, 3000);
+    }
+
     const handleUnlock = () => {
          setShowConfetti(true);
          setTimeout(() => {
@@ -80,6 +102,7 @@ export function BirthdayPage() {
     return (
         <div className="min-h-screen w-full flex items-center justify-center p-4 bg-background font-body">
             {showConfetti && <Confetti />}
+            {showHintConfetti && <Confetti />}
             <main className="w-full max-w-2xl">
               <Card className="shadow-2xl animate-in fade-in zoom-in-95 duration-500">
                   <CardHeader className="text-center">
@@ -103,18 +126,49 @@ export function BirthdayPage() {
                                       </div>
                                   </div>
                                   {!correctAnswers[clue.id] && (
-                                    <form onSubmit={(e) => { e.preventDefault(); handleClueSubmit(clue.id, clueAnswers[clue.id as keyof typeof clueAnswers]); }} className="mt-3 flex gap-2">
-                                          <Input
-                                              type="text"
-                                              placeholder="Your answer..."
-                                              value={answers[clue.id]}
-                                              onChange={(e) => handleInputChange(clue.id, e.target.value)}
-                                              className="text-base h-11"
-                                          />
-                                          <Button type="submit" size="icon" className="h-11 w-11 flex-shrink-0">
-                                            <ArrowRight className="h-5 w-5" />
-                                          </Button>
-                                    </form>
+                                    <div className="mt-3">
+                                        <form onSubmit={(e) => { e.preventDefault(); handleClueSubmit(clue.id, clueAnswers[clue.id as keyof typeof clueAnswers]); }} className="flex gap-2">
+                                            <Input
+                                                type="text"
+                                                placeholder="Your answer..."
+                                                value={answers[clue.id]}
+                                                onChange={(e) => handleInputChange(clue.id, e.target.value)}
+                                                className="text-base h-11"
+                                            />
+                                            <Button type="submit" size="icon" className="h-11 w-11 flex-shrink-0">
+                                                <ArrowRight className="h-5 w-5" />
+                                            </Button>
+                                        </form>
+                                        {!revealedHints[clue.id] && (
+                                            <AlertDialog>
+                                                <AlertDialogTrigger asChild>
+                                                    <Button variant="link" className="text-muted-foreground text-xs h-auto p-0 mt-2">
+                                                        <HelpCircle className="h-3 w-3 mr-1" />
+                                                        Need a hint?
+                                                    </Button>
+                                                </AlertDialogTrigger>
+                                                <AlertDialogContent>
+                                                    <AlertDialogHeader>
+                                                        <AlertDialogTitle>{clue.confirmTitle}</AlertDialogTitle>
+                                                        <AlertDialogDescription>
+                                                           {clue.confirmText}
+                                                        </AlertDialogDescription>
+                                                    </AlertDialogHeader>
+                                                    <AlertDialogFooter>
+                                                        <AlertDialogCancel>Nevermind, I got this</AlertDialogCancel>
+                                                        <AlertDialogAction onClick={() => handleRevealHint(clue.id)}>
+                                                            Yes, I need help
+                                                        </AlertDialogAction>
+                                                    </AlertDialogFooter>
+                                                </AlertDialogContent>
+                                            </AlertDialog>
+                                        )}
+                                    </div>
+                                  )}
+                                  {revealedHints[clue.id] && !correctAnswers[clue.id] && (
+                                      <p className="mt-2 text-sm text-accent-foreground p-2 bg-accent/30 rounded-md">
+                                          <strong>Hint:</strong> {clue.hint}
+                                      </p>
                                   )}
                                   {correctAnswers[clue.id] && (
                                       <div className="mt-2 text-green-700 font-bold flex items-center gap-2">
