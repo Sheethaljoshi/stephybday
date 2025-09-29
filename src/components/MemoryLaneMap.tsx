@@ -14,7 +14,7 @@ const mapPoints = [
     id: 'school',
     title: 'Where It All Began',
     description: 'The countless hours spent in that stuffy classroom... Who knew it would lead to this? This is where our story officially started.',
-    imageUrl: 'https://images.unsplash.com/photo-156078547A-1DF210452969?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxhbm5veWluZyUyMGNsYXNzcm9vbXxlbnwwfHx8fDE3NTkxNTI5ODR8MA&ixlib=rb-4-0.3&q=80&w=1080',
+    imageUrl: 'https://images.unsplash.com/photo-156078547A-1DF210452969?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxhbm5veWluZyUyMGNsYXNzcm9vbXxlbnwwfHx8fDE3NTkxNTI5ODR8MA&ixlib=rb-4.0.3&q=80&w=1080',
     imageHint: "annoying classroom",
     position: { top: '30%', left: '25%' },
   },
@@ -22,7 +22,7 @@ const mapPoints = [
     id: 'cafe',
     title: 'Our Favorite Cafe',
     description: "The official headquarters for all our gossip sessions, late-night study crises, and bubble tea emergencies. We've probably spent a fortune here.",
-    imageUrl: 'https://images.unsplash.com/photo-1559925393-8be0ec4767c8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxyZWxhdGFibGUlMjBxdW90ZXxlbnwwfHx8fDE3NTkxNTI5NTl8MA&ixlib=rb-4-0.3&q=80&w=1080',
+    imageUrl: 'https://images.unsplash.com/photo-1559925393-8be0ec4767c8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxyZWxhdGFibGUlMjBxdW90ZXxlbnwwfHx8fDE3NTkxNTI5NTl8MA&ixlib=rb-4.0.3&q=80&w=1080',
     imageHint: "relatable quote",
     position: { top: '65%', left: '55%' },
   },
@@ -30,7 +30,7 @@ const mapPoints = [
     id: 'trip',
     title: 'That Unforgettable Trip',
     description: 'Remember that one trip? The one with all the inside jokes we still laugh about. It was chaotic, it was perfect.',
-    imageUrl: 'https://images.unsplash.com/photo-1532664032179-36d09349884a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxmcmllbmRzJTIwdHJpcHxlbnwwfHx8fDE3NTkxNTI5NTl8MA&ixlib=rb-4-0.3&q=80&w=1080',
+    imageUrl: 'https://images.unsplash.com/photo-1532664032179-36d09349884a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxmcmllbmRzJTIwdHJpcHxlbnwwfHx8fDE3NTkxNTI5NTl8MA&ixlib=rb-4.0.3&q=80&w=1080',
     imageHint: "friends trip",
     position: { top: '40%', left: '78%' },
   },
@@ -39,11 +39,13 @@ const mapPoints = [
 export function MemoryLaneMap() {
   return (
     <div className="w-full h-full flex items-center justify-center">
-        <div className="relative w-[500px] h-[300px] bg-accent/30 rounded-2xl shadow-inner overflow-hidden border-2 border-dashed">
-            {/* You can add a subtle map background image here */}
-            <div 
-                className="absolute inset-0 bg-repeat bg-center opacity-20"
-                style={{backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`}}
+        <div className="relative w-[500px] h-[300px] rounded-2xl shadow-inner overflow-hidden border-2 border-dashed border-primary/50">
+            <Image
+                src="https://images.unsplash.com/photo-1543699539-a699818793b2?q=80&w=2070&auto=format&fit=crop"
+                alt="Vintage map background"
+                fill
+                className="object-cover opacity-30"
+                data-ai-hint="vintage map"
             />
             
             <TooltipProvider>
