@@ -30,11 +30,11 @@ const clueAnswers = {
 };
 
 const clues = [
-    { id: 'start', icon: Book, text: "Where did our friendship officially start?", hint: "It's a two-character answer. Think class and division! 📚", confirmTitle: "Are you sure?", confirmText: "This is where it all began! You should know this one." },
-    { id: 'cartoon', icon: Film, text: "Which cartoon character do we always associate with you?", hint: "Red, yellow, black... and always furious.", confirmTitle: "Really?", confirmText: "You're so close! Try to picture your own angry face." },
-    { id: 'song', icon: Music, text: "What song did you sing at Arts Fest that we all loved?", hint: "It's by ABBA!", confirmTitle: "Gimme! Gimme! Gimme a hint?", confirmText: "We know you're the 'Dancing Queen', but do you remember this one?" },
+    { id: 'start', icon: Book, text: "Where did our friendship officially start?", hint: "Annoying Malayalam Class Teacher?", confirmTitle: "Are you sure?", confirmText: "This is where it all began! You should know this one." },
+    { id: 'cartoon', icon: Film, text: "Which cartoon character do we always associate with you?", hint: "Red, yellow, black...", confirmTitle: "Really?", confirmText: "You're so close! Try to picture your own concentrate/angry face." },
+    { id: 'song', icon: Music, text: "What song did you sing at Arts Fest that we all loved?", hint: "ABBA", confirmTitle: "Gimme! Gimme! Gimme a hint?", confirmText: "We know you're the Art Queen, but do you remember this one?" },
     { id: 'friend', icon: Users, text: "Who is our friend that’s never been in our class yet?", hint: "You don't need a clue, figure this one out yourself.", confirmTitle: "No hints for this one!", confirmText: "Seriously, this is a giveaway. You got this!" },
-    { id: 'teacher', icon: Heart, text: "Which teacher loved you the most?", hint: "Our mean Malayalam class teacher.", confirmTitle: "Need a teacher's pet hint?", confirmText: "Think back to the strictest teacher... who secretly had a soft spot for you." },
+    { id: 'teacher', icon: Heart, text: "Which teacher loved you the most?", hint: "Nancy Drew or Geronimo Stilton", confirmTitle: "Need a teacher's pet hint?", confirmText: "Think back to the strictest teacher... who secretly had a soft spot for you." },
 ];
 
 export function BirthdayPage() {
