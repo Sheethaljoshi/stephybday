@@ -23,27 +23,21 @@ export function LetterToStephyPage({ onBack }: { onBack: () => void }) {
         <div className="mx-auto max-w-2xl py-12 sm:py-24">
           <div className="text-center">
             <h1 className="font-headline text-4xl font-bold tracking-tight text-primary-foreground sm:text-6xl">
-              To the Stephy of the Future
+              To the Stephy of the Past
             </h1>
             <div className="mt-10 space-y-6 text-lg leading-8 text-muted-foreground">
+              <p>Dear 13-year-old Buffy,</p>
               <p>
-                Hey Old Stephy, we hope you're reading this from a comfy chair,
-                with a cup of tea, and still bossing everyone around. We just
-                wanted to remind you of a few things:
+                Omg… look at you, so cute, literally a little firecracker of a child. But guess what? You’re about to make the most annoying, roast-happy friends ever who’ll never leave you alone… and somehow, you’ll love every minute of it.
               </p>
-              <ul className="list-disc list-inside space-y-2 text-left">
-                <li>We're so proud of the person you've become.</li>
-                <li>
-                  Remember all the late-night talks, the silly dances, and the
-                  dreams we shared?
-                </li>
-                <li>
-                  Your kindness and strength have always been your superpowers.
-                </li>
-                <li>We hope you're still obsessed with a good book.</li>
-              </ul>
-              <p className="text-right font-bold pt-4 border-t border-dashed">
-                We love you to the moon and back.
+              <p>
+                You’re growing into a strong, unstoppable woman. From that innocent, shy girl, you’re going to become bold, crazy, and totally unapologetic about who you are. You’ll be independent, confident, and figure out how to conquer the world.
+              </p>
+              <p>
+                Also, can we talk about your glow-up?You’re gonna look amazing—inside and out. You’ll take risks, get out of your comfort zone, and grow smarter and braver than you ever imagined. Your creativity? Literally no bounds. You’ll learn to live alone, explore new places, and totally slay in the UK… so proud of you for that.
+              </p>
+              <p>
+                You’ve got so many strengths—patience, resilience, curiosity, and a heart that loves deeply. Keep analyzing, keep creating, and don’t ever doubt yourself. I just want to hug you rn… love your past self, can’t wait to see the incredible person you become.
               </p>
             </div>
             <div className="mt-10 flex items-center justify-center gap-x-6">
