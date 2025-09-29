@@ -6,7 +6,6 @@ import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Card, CardContent } from '@/components/ui/card';
 import { Camera, Mail, Sparkles, Wand2, MessageSquareHeart, Heart, GitCommit, ChevronDown, LockKeyhole, FileText, ArrowLeft } from 'lucide-react';
@@ -96,88 +95,92 @@ export function MainContent() {
             </div>
         </div>
 
+        {/* --- Meme Section --- */}
+        <section className="space-y-8 text-center">
+             <h2 className="font-headline text-4xl text-primary-foreground flex items-center justify-center gap-3"><Sparkles className="text-primary-foreground h-8 w-8"/>Meme Hall of Fame</h2>
+             <p className="text-muted-foreground mt-2 max-w-xl mx-auto">A collection of moments that live in our heads rent-free, because normal photos are too mainstream.</p>
+             <Carousel className="w-full max-w-xl mx-auto" opts={{ loop: true }}>
+               <CarouselContent>
+                 {memeImages.map((meme) => (
+                   <CarouselItem key={meme.id} className="text-center">
+                     <div className="p-1">
+                         <CardContent className="flex aspect-video items-center justify-center p-0 relative rounded-lg overflow-hidden border">
+                           <Image
+                             src={meme.imageUrl}
+                             alt={meme.description}
+                             width={600}
+                             height={400}
+                             data-ai-hint={meme.imageHint}
+                             className="object-cover w-full h-full"
+                           />
+                            <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
+                             <p className="font-semibold text-white text-lg">{memeCaptions[meme.id]}</p>
+                         </div>
+                         </CardContent>
+                     </div>
+                   </CarouselItem>
+                 ))}
+               </CarouselContent>
+               <CarouselPrevious />
+               <CarouselNext />
+             </Carousel>
+        </section>
 
-        {/* --- Interactive Fun Section --- */}
-        <section className="space-y-8 bg-card rounded-lg p-8 shadow-xl border">
-            <div className="text-center">
-                <h2 className="font-headline text-4xl text-primary-foreground">The Fun Zone</h2>
-                <p className="text-muted-foreground mt-2">Time for some interactive shenanigans.</p>
+
+        <div className="relative text-center">
+            <div className="absolute inset-0 flex items-center" aria-hidden="true">
+                <div className="w-full border-t border-dashed border-border"></div>
             </div>
-            
-            <div className="grid md:grid-cols-2 gap-8">
-                <div className="space-y-4">
-                     <h3 className="font-headline text-2xl flex items-center gap-3"><Sparkles className="text-primary-foreground h-6 w-6"/> Meme Hall of Fame</h3>
-                     <p className="text-muted-foreground">A collection of moments that live in our heads rent-free.</p>
-                     <Dialog>
-                       <DialogTrigger asChild>
-                         <Button className="w-full" variant="outline">Enter the Meme-iverse</Button>
-                       </DialogTrigger>
-                       <DialogContent className="max-w-3xl">
-                         <DialogHeader>
-                           <DialogTitle>Our Meme Hall of Fame</DialogTitle>
-                           <DialogDescription>Because normal photos are too mainstream.</DialogDescription>
-                         </DialogHeader>
-                         <Carousel className="w-full max-w-xl mx-auto" opts={{ loop: true }}>
-                           <CarouselContent>
-                             {memeImages.map((meme) => (
-                               <CarouselItem key={meme.id} className="text-center">
-                                 <div className="p-1">
-                                     <CardContent className="flex aspect-video items-center justify-center p-0 relative rounded-lg overflow-hidden border">
-                                       <Image
-                                         src={meme.imageUrl}
-                                         alt={meme.description}
-                                         width={600}
-                                         height={400}
-                                         data-ai-hint={meme.imageHint}
-                                         className="object-cover w-full h-full"
-                                       />
-                                        <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
-                                         <p className="font-semibold text-white text-lg">{memeCaptions[meme.id]}</p>
-                                     </div>
-                                     </CardContent>
-                                 </div>
-                               </CarouselItem>
-                             ))}
-                           </CarouselContent>
-                           <CarouselPrevious />
-                           <CarouselNext />
-                         </Carousel>
-                       </DialogContent>
-                     </Dialog>
-                </div>
-                <div className="space-y-4">
-                    <h3 className="font-headline text-2xl flex items-center gap-3"><Camera className="text-primary-foreground h-6 w-6"/> Throwback Moment</h3>
-                    <p className="text-muted-foreground">One for the history books. Click to remember!</p>
+            <div className="relative flex justify-center">
+                <span className="bg-background px-4 text-muted-foreground"><GitCommit /></span>
+            </div>
+        </div>
+
+
+        {/* --- Throwback & AI Section --- */}
+        <section className="grid md:grid-cols-5 gap-8 items-center">
+            <div className="md:col-span-2 text-center md:text-left">
+                <h2 className="font-headline text-4xl text-primary-foreground flex items-center justify-center md:justify-start gap-3"><Camera className="h-8 w-8"/> A Moment in Time</h2>
+                <p className="text-muted-foreground mt-2">Let's take a trip down memory lane... Remember this?</p>
+                
+                {throwbackImage && (
                     <Dialog>
                         <DialogTrigger asChild>
-                            <Button className="w-full">Remember when... ❤️</Button>
+                            <Card className="mt-6 bg-white p-3 pb-8 rounded-lg shadow-lg rotate-[-3deg] hover:rotate-0 hover:scale-105 transition-transform duration-300 cursor-pointer w-3/4 mx-auto md:w-full">
+                                <Image
+                                    src={throwbackImage.imageUrl}
+                                    alt={throwbackImage.description}
+                                    width={600}
+                                    height={800}
+                                    data-ai-hint={throwbackImage.imageHint}
+                                    className="rounded-md w-full h-auto"
+                                />
+                                <p className="font-headline text-lg mt-3 text-center text-gray-700">The good old days!</p>
+                            </Card>
                         </DialogTrigger>
                         <DialogContent className="max-w-md">
                             <DialogHeader>
                                 <DialogTitle>Throwback Moment 📸</DialogTitle>
                             </DialogHeader>
-                            {throwbackImage && (
-                                <div className="relative mt-4">
-                                    <Image
-                                        src={throwbackImage.imageUrl}
-                                        alt={throwbackImage.description}
-                                        width={600}
-                                        height={800}
-                                        data-ai-hint={throwbackImage.imageHint}
-                                        className="rounded-lg shadow-xl w-full h-auto"
-                                    />
-                                    <p className="absolute bottom-4 left-4 right-4 bg-black/50 text-white p-2 rounded-md text-center font-headline">The good old days!</p>
-                                </div>
-                            )}
+                            <div className="relative mt-4">
+                                <Image
+                                    src={throwbackImage.imageUrl}
+                                    alt={throwbackImage.description}
+                                    width={600}
+                                    height={800}
+                                    data-ai-hint={throwbackImage.imageHint}
+                                    className="rounded-lg shadow-xl w-full h-auto"
+                                />
+                            </div>
                         </DialogContent>
                     </Dialog>
-                </div>
+                )}
             </div>
 
-             <div className="pt-8 text-center">
-                <h3 className="font-headline text-2xl flex items-center gap-3 justify-center"><Wand2 className="text-primary-foreground h-6 w-6"/> AI Time Machine</h3>
-                <p className="text-muted-foreground mt-2 max-w-md mx-auto">Curious to see what 50 years does to us? Upload a photo to find out.</p>
-                <div className="mt-4 max-w-md mx-auto">
+            <div className="md:col-span-3 bg-card rounded-lg p-8 shadow-xl border text-center">
+                <h3 className="font-headline text-4xl text-primary-foreground flex items-center gap-3 justify-center"><Wand2 className="text-primary-foreground h-8 w-8"/> AI Time Machine</h3>
+                <p className="text-muted-foreground mt-2 max-w-md mx-auto">Curious to see what 50 years does to us? Upload a group photo and let the AI work its magic!</p>
+                <div className="mt-6 max-w-md mx-auto">
                     <AiImageSection />
                 </div>
             </div>
@@ -192,9 +195,5 @@ export function MainContent() {
     </div>
   );
 }
-
-    
-
-    
 
     
