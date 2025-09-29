@@ -9,8 +9,9 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Card, CardContent } from '@/components/ui/card';
-import { Camera, Mail, Sparkles, Wand2, MessageSquareHeart, Heart, GitCommit, ChevronDown, LockKeyhole, FileText } from 'lucide-react';
+import { Camera, Mail, Sparkles, Wand2, MessageSquareHeart, Heart, GitCommit, ChevronDown, LockKeyhole, FileText, ArrowLeft } from 'lucide-react';
 import { AiImageSection } from './AiImageSection';
+import { LetterToStephyPage } from './LetterToStephyPage';
 
 const memeImages = PlaceHolderImages.filter(img => img.id.startsWith('meme'));
 const throwbackImage = PlaceHolderImages.find(img => img.id === 'throwback');
@@ -24,6 +25,11 @@ const memeCaptions: { [key: string]: string } = {
 
 export function MainContent() {
   const [isLetterOpen, setIsLetterOpen] = React.useState(false);
+  const [showStephyLetter, setShowStephyLetter] = React.useState(false);
+
+  if (showStephyLetter) {
+    return <LetterToStephyPage onBack={() => setShowStephyLetter(false)} />;
+  }
 
   return (
     <div className="flex flex-col min-h-screen w-full bg-background animate-in fade-in duration-1000 font-body">
@@ -69,36 +75,14 @@ export function MainContent() {
                   </DialogContent>
                 </Dialog>
 
-                <Card className="shadow-lg overflow-hidden">
-                    <div 
-                        className="p-6 text-left hover:no-underline hover:bg-muted/50 focus:bg-muted/50 group cursor-pointer"
-                        onClick={() => setIsLetterOpen(!isLetterOpen)}
-                    >
-                        <div className="flex items-center gap-4 w-full">
-                            <div className="bg-primary/20 p-4 rounded-full transition-transform group-hover:scale-110">
-                                <FileText className="h-10 w-10 text-primary-foreground"/>
-                            </div>
-                            <div className="flex-1 text-left">
-                                <h3 className="font-headline text-2xl">To the Stephy of the Future</h3>
-                                <p className="text-muted-foreground mt-2">A few words for the years to come. Click to read.</p>
-                            </div>
-                            <ChevronDown className={`h-6 w-6 shrink-0 transition-transform duration-200 ${isLetterOpen ? 'rotate-180' : ''}`} />
-                        </div>
-                    </div>
-                    {isLetterOpen && (
-                        <div className="bg-muted/20">
-                            <div className="p-6 text-base leading-relaxed space-y-4 pt-4 max-h-48 overflow-y-auto">
-                                 <p>Hey Old Stephy, we hope you're reading this from a comfy chair, with a cup of tea, and still bossing everyone around. We just wanted to remind you of a few things:</p>
-                                  <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                                      <li>We're so proud of the person you've become.</li>
-                                      <li>Remember all the late-night talks, the silly dances, and the dreams we shared?</li>
-                                      <li>Your kindness and strength have always been your superpowers.</li>
-                                      <li>We hope you're still obsessed with a good book.</li>
-                                  </ul>
-                                <p className="text-right font-bold pt-4 border-t">We love you to the moon and back.</p>
-                            </div>
-                        </div>
-                    )}
+                <Card className="shadow-lg overflow-hidden flex flex-col items-center justify-center text-center h-full group cursor-pointer hover:shadow-2xl hover:scale-105 transition-all duration-300" onClick={() => setShowStephyLetter(true)}>
+                    <CardContent className="p-6 flex flex-col items-center justify-center h-full">
+                       <div className="mx-auto bg-primary/20 p-4 rounded-full mb-4 w-fit transition-transform group-hover:scale-110">
+                         <FileText className="h-10 w-10 text-primary-foreground" />
+                       </div>
+                       <h3 className="font-headline text-2xl">To the Stephy of the Future</h3>
+                       <p className="text-muted-foreground mt-2">A few words for the years to come. Click to read.</p>
+                    </CardContent>
                 </Card>
             </div>
         </section>
@@ -208,6 +192,8 @@ export function MainContent() {
     </div>
   );
 }
+
+    
 
     
 
