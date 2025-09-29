@@ -13,7 +13,6 @@ import { Camera, Mail, Sparkles, Wand2, MessageSquareHeart, Heart, GitCommit, Ch
 import { LetterToStephyPage } from './LetterToStephyPage';
 import { MemoryLaneMap } from './MemoryLaneMap';
 import { Confetti } from './Confetti';
-import { AiImageSection } from './AiImageSection';
 
 const memeImages = PlaceHolderImages.filter(img => img.id.startsWith('meme'));
 const throwbackImage = PlaceHolderImages.find(img => img.id === 'throwback');
@@ -232,14 +231,6 @@ export function MainContent() {
                 </div>
                 <MemoryLaneMap />
             </section>
-        </section>
-
-        <section className="bg-card rounded-2xl shadow-xl border p-8 md:p-12 text-center">
-            <h2 className="font-headline text-4xl text-primary-foreground flex items-center justify-center gap-3"><Wand2 className="text-primary-foreground h-8 w-8"/>AI Time Machine</h2>
-            <p className="text-muted-foreground mt-2 max-w-xl mx-auto">Ever wonder what we'll look like in 50 years? Upload a photo of us and let's find out!</p>
-            <div className="mt-6 max-w-sm mx-auto">
-                <AiImageSection />
-            </div>
         </section>
 
         <div className="relative text-center">
