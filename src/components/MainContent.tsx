@@ -6,9 +6,10 @@ import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Card, CardContent } from '@/components/ui/card';
-import { Camera, Mail, Sparkles, Wand2, MessageSquareHeart, Heart, GitCommit, ChevronDown, LockKeyhole } from 'lucide-react';
+import { Camera, Mail, Sparkles, Wand2, MessageSquareHeart, Heart, GitCommit, ChevronDown, LockKeyhole, FileText } from 'lucide-react';
 import { AiImageSection } from './AiImageSection';
 
 const memeImages = PlaceHolderImages.filter(img => img.id.startsWith('meme'));
@@ -41,13 +42,13 @@ export function MainContent() {
             <div className="grid md:grid-cols-2 gap-8 items-start">
                 <Dialog>
                   <DialogTrigger asChild>
-                    <Card className="shadow-lg cursor-pointer hover:shadow-2xl hover:scale-105 transition-all duration-300 text-center">
+                    <Card className="shadow-lg cursor-pointer hover:shadow-2xl hover:scale-105 transition-all duration-300 text-center h-full group">
                         <CardContent className="p-6 flex flex-col items-center justify-center h-full">
-                           <div className="mx-auto bg-primary/20 p-4 rounded-full mb-4 w-fit">
-                             <LockKeyhole className="h-10 w-10 text-primary-foreground" />
+                           <div className="mx-auto bg-primary/20 p-4 rounded-full mb-4 w-fit transition-transform group-hover:scale-110">
+                             <Mail className="h-10 w-10 text-primary-foreground" />
                            </div>
                            <h3 className="font-headline text-2xl">A Top-Secret Letter</h3>
-                           <p className="text-muted-foreground mt-2">For the future Mr. Stephy's eyes only. Click to unlock.</p>
+                           <p className="text-muted-foreground mt-2">For the future Mr. Stephy's eyes only. Click to unseal.</p>
                         </CardContent>
                     </Card>
                   </DialogTrigger>
@@ -66,20 +67,35 @@ export function MainContent() {
                   </DialogContent>
                 </Dialog>
 
-                <Card className="shadow-lg transform transition-transform hover:scale-105 duration-300">
-                  <CardContent className="p-6">
-                    <h3 className="font-headline text-2xl flex items-center gap-3 mb-4"><MessageSquareHeart className="text-primary-foreground h-6 w-6"/> To the Stephy of the Future</h3>
-                    <div className="text-base leading-relaxed space-y-4">
-                         <p>Hey Old Stephy, we hope you're reading this from a comfy chair, with a cup of tea, and still bossing everyone around. We just wanted to remind you of a few things:</p>
-                          <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                              <li>We're so proud of the person you've become.</li>
-                              <li>Remember all the late-night talks, the silly dances, and the dreams we shared?</li>
-                              <li>Your kindness and strength have always been your superpowers.</li>
-                              <li>We hope you're still obsessed with a good book.</li>
-                          </ul>
-                        <p className="text-right font-bold pt-4 border-t">We love you to the moon and back.</p>
-                    </div>
-                  </CardContent>
+                <Card className="shadow-lg overflow-hidden">
+                    <Accordion type="single" collapsible>
+                        <AccordionItem value="item-1" className="border-b-0">
+                            <AccordionTrigger className="p-6 text-left hover:no-underline hover:bg-muted/50 focus:bg-muted/50 group">
+                                <div className="flex items-center gap-4 w-full">
+                                    <div className="bg-primary/20 p-4 rounded-full transition-transform group-hover:scale-110">
+                                        <FileText className="h-10 w-10 text-primary-foreground"/>
+                                    </div>
+                                    <div className="flex-1 text-left">
+                                        <h3 className="font-headline text-2xl">To the Stephy of the Future</h3>
+                                        <p className="text-muted-foreground mt-2">A few words for the years to come. Click to read.</p>
+                                    </div>
+                                    <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200 group-data-[state=open]:rotate-180" />
+                                </div>
+                            </AccordionTrigger>
+                            <AccordionContent className="bg-muted/20">
+                                <div className="p-6 text-base leading-relaxed space-y-4 pt-4">
+                                     <p>Hey Old Stephy, we hope you're reading this from a comfy chair, with a cup of tea, and still bossing everyone around. We just wanted to remind you of a few things:</p>
+                                      <ul className="list-disc list-inside space-y-2 text-muted-foreground">
+                                          <li>We're so proud of the person you've become.</li>
+                                          <li>Remember all the late-night talks, the silly dances, and the dreams we shared?</li>
+                                          <li>Your kindness and strength have always been your superpowers.</li>
+                                          <li>We hope you're still obsessed with a good book.</li>
+                                      </ul>
+                                    <p className="text-right font-bold pt-4 border-t">We love you to the moon and back.</p>
+                                </div>
+                            </AccordionContent>
+                        </AccordionItem>
+                    </Accordion>
                 </Card>
             </div>
         </section>
@@ -189,7 +205,3 @@ export function MainContent() {
     </div>
   );
 }
-
-    
-
-    
