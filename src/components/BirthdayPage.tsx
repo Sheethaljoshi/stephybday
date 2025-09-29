@@ -86,8 +86,8 @@ export function BirthdayPage() {
                       <div className="mx-auto bg-primary/20 p-3 rounded-full mb-4 w-fit">
                           <Gift className="h-10 w-10 text-primary-foreground" />
                       </div>
-                      <CardTitle className="font-headline text-4xl">Happy Birthday Stephy!!!!</CardTitle>
-                      <CardDescription className="text-lg px-6">Your birthday surprise waits inside. Answer these questions and yayyy you're in</CardDescription>
+                      <CardTitle className="font-headline text-4xl">Alright, spill the tea, birthday girl!</CardTitle>
+                      <CardDescription className="text-lg px-6">Your surprise is locked behind some of our best memories. Prove you remember, and it's all yours. No pressure.</CardDescription>
                   </CardHeader>
                   <CardContent>
                       <div className="space-y-4 mb-6">
