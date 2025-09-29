@@ -19,11 +19,11 @@ const clueAnswers = {
 };
 
 const clues = [
-    { id: 'start', icon: Book, text: "Where did our friendship officially start?", hint: "6B 📚", answer: clueAnswers.start },
-    { id: 'cartoon', icon: Film, text: "Which cartoon character do we always associate with you?", hint: "Angry Birds 🐦", answer: clueAnswers.cartoon },
-    { id: 'song', icon: Music, text: "What song did you sing at Arts Fest that we all loved?", hint: "Chiquitita 🎶", answer: clueAnswers.song },
-    { id: 'friend', icon: Users, text: "Who is our friend that’s never been in our class yet?", hint: "Maria 💕", answer: clueAnswers.friend },
-    { id: 'teacher', icon: Heart, text: "Which teacher loved you the most?", hint: "Teacher ❤️", answer: clueAnswers.teacher },
+    { id: 'start', icon: Book, text: "Where did our friendship officially start?", hint: "A grade and a section. 📚", answer: clueAnswers.start },
+    { id: 'cartoon', icon: Film, text: "Which cartoon character do we always associate with you?", hint: "Hint: They're not happy birds. 🐦", answer: clueAnswers.cartoon },
+    { id: 'song', icon: Music, text: "What song did you sing at Arts Fest that we all loved?", hint: "Hint: It's a classic by ABBA. 🎶", answer: clueAnswers.song },
+    { id: 'friend', icon: Users, text: "Who is our friend that’s never been in our class yet?", hint: "Hint: Her name starts with M. 💕", answer: clueAnswers.friend },
+    { id: 'teacher', icon: Heart, text: "Which teacher loved you the most?", hint: "Hint: Her name ends with 'Ma'am'. ❤️", answer: clueAnswers.teacher },
 ];
 
 export function BirthdayPage() {
