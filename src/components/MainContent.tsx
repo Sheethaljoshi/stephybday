@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -7,7 +8,8 @@ import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Card, CardContent } from '@/components/ui/card';
-import { Camera, Mail, Sparkles, Wand2, MessageSquareHeart, Heart, GitCommit } from 'lucide-react';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
+import { Camera, Mail, Sparkles, Wand2, MessageSquareHeart, Heart, GitCommit, ChevronDown } from 'lucide-react';
 import { AiImageSection } from './AiImageSection';
 
 const memeImages = PlaceHolderImages.filter(img => img.id.startsWith('meme'));
@@ -21,6 +23,7 @@ const memeCaptions: { [key: string]: string } = {
 
 
 export function MainContent() {
+  const [isLetterOpen, setIsLetterOpen] = React.useState(false);
   return (
     <div className="flex flex-col min-h-screen w-full bg-background animate-in fade-in duration-1000 font-body">
       
@@ -38,18 +41,29 @@ export function MainContent() {
                 <p className="text-muted-foreground mt-2">From us, to you (and your future hubby).</p>
             </div>
             <div className="grid md:grid-cols-2 gap-8 items-start">
-                <Card className="shadow-lg transform transition-transform hover:scale-105 duration-300">
-                  <CardContent className="p-6">
-                    <h3 className="font-headline text-2xl flex items-center gap-3 mb-4"><Mail className="text-primary-foreground h-6 w-6"/> To Your Future Hubby</h3>
-                    <div className="text-base leading-relaxed space-y-4">
-                        <p>Dear Future Mr. Stephy,</p>
-                        <p>You've hit the jackpot! You're with someone who's not only incredibly smart and beautiful but also has the biggest heart. She's the kind of person who will laugh at your dumbest jokes and support your wildest dreams.</p>
-                        <p>She might steal the covers and leave her bobby pins everywhere, but she'll also make you the happiest person on Earth.</p>
-                        <p className="text-sm text-muted-foreground pt-4 border-t">P.S. Rules: 1. Let her have the last slice of pizza. 2. Never question her love for bubble tea. 3. Agree that her friends (us) are awesome.</p>
-                        <p className="mt-4 font-bold text-right">Good luck, you'll need it.<Heart className="inline h-4 w-4 ml-1 text-red-500 fill-red-500"/></p>
-                    </div>
-                  </CardContent>
-                </Card>
+                <Collapsible open={isLetterOpen} onOpenChange={setIsLetterOpen} className="w-full">
+                  <Card className="shadow-lg">
+                    <CardContent className="p-6">
+                        <div className="flex justify-between items-center">
+                            <h3 className="font-headline text-2xl flex items-center gap-3"><Mail className="text-primary-foreground h-6 w-6"/> To Your Future Hubby</h3>
+                            <CollapsibleTrigger asChild>
+                                <Button variant="ghost" size="sm" className="w-9 p-0">
+                                    <ChevronDown className={`h-4 w-4 transition-transform ${isLetterOpen ? 'rotate-180' : ''}`} />
+                                    <span className="sr-only">Toggle Letter</span>
+                                </Button>
+                            </CollapsibleTrigger>
+                        </div>
+                        <p className="text-sm text-muted-foreground mt-2">A top-secret message for his eyes only. Click to reveal.</p>
+                        <CollapsibleContent className="space-y-4 pt-4 text-base leading-relaxed">
+                            <p>Dear Future Mr. Stephy,</p>
+                            <p>You've hit the jackpot! You're with someone who's not only incredibly smart and beautiful but also has the biggest heart. She's the kind of person who will laugh at your dumbest jokes and support your wildest dreams.</p>
+                            <p>She might steal the covers and leave her bobby pins everywhere, but she'll also make you the happiest person on Earth.</p>
+                            <p className="text-sm text-muted-foreground pt-4 border-t">P.S. Rules: 1. Let her have the last slice of pizza. 2. Never question her love for bubble tea. 3. Agree that her friends (us) are awesome.</p>
+                            <p className="mt-4 font-bold text-right">Good luck, you'll need it.<Heart className="inline h-4 w-4 ml-1 text-red-500 fill-red-500"/></p>
+                        </CollapsibleContent>
+                    </CardContent>
+                  </Card>
+                </Collapsible>
 
                 <Card className="shadow-lg transform transition-transform hover:scale-105 duration-300 mt-0 md:mt-8">
                   <CardContent className="p-6">
@@ -174,3 +188,5 @@ export function MainContent() {
     </div>
   );
 }
+
+    
