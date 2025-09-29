@@ -23,6 +23,8 @@ const memeCaptions: { [key: string]: string } = {
 
 
 export function MainContent() {
+  const [isLetterOpen, setIsLetterOpen] = React.useState(false);
+
   return (
     <div className="flex flex-col min-h-screen w-full bg-background animate-in fade-in duration-1000 font-body">
       
@@ -68,34 +70,35 @@ export function MainContent() {
                 </Dialog>
 
                 <Card className="shadow-lg overflow-hidden">
-                    <Accordion type="single" collapsible>
-                        <AccordionItem value="item-1" className="border-b-0">
-                            <AccordionTrigger className="p-6 text-left hover:no-underline hover:bg-muted/50 focus:bg-muted/50 group">
-                                <div className="flex items-center gap-4 w-full">
-                                    <div className="bg-primary/20 p-4 rounded-full transition-transform group-hover:scale-110">
-                                        <FileText className="h-10 w-10 text-primary-foreground"/>
-                                    </div>
-                                    <div className="flex-1 text-left">
-                                        <h3 className="font-headline text-2xl">To the Stephy of the Future</h3>
-                                        <p className="text-muted-foreground mt-2">A few words for the years to come. Click to read.</p>
-                                    </div>
-                                    <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200 group-data-[state=open]:rotate-180" />
-                                </div>
-                            </AccordionTrigger>
-                            <AccordionContent className="bg-muted/20">
-                                <div className="p-6 text-base leading-relaxed space-y-4 pt-4">
-                                     <p>Hey Old Stephy, we hope you're reading this from a comfy chair, with a cup of tea, and still bossing everyone around. We just wanted to remind you of a few things:</p>
-                                      <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                                          <li>We're so proud of the person you've become.</li>
-                                          <li>Remember all the late-night talks, the silly dances, and the dreams we shared?</li>
-                                          <li>Your kindness and strength have always been your superpowers.</li>
-                                          <li>We hope you're still obsessed with a good book.</li>
-                                      </ul>
-                                    <p className="text-right font-bold pt-4 border-t">We love you to the moon and back.</p>
-                                </div>
-                            </AccordionContent>
-                        </AccordionItem>
-                    </Accordion>
+                    <div 
+                        className="p-6 text-left hover:no-underline hover:bg-muted/50 focus:bg-muted/50 group cursor-pointer"
+                        onClick={() => setIsLetterOpen(!isLetterOpen)}
+                    >
+                        <div className="flex items-center gap-4 w-full">
+                            <div className="bg-primary/20 p-4 rounded-full transition-transform group-hover:scale-110">
+                                <FileText className="h-10 w-10 text-primary-foreground"/>
+                            </div>
+                            <div className="flex-1 text-left">
+                                <h3 className="font-headline text-2xl">To the Stephy of the Future</h3>
+                                <p className="text-muted-foreground mt-2">A few words for the years to come. Click to read.</p>
+                            </div>
+                            <ChevronDown className={`h-6 w-6 shrink-0 transition-transform duration-200 ${isLetterOpen ? 'rotate-180' : ''}`} />
+                        </div>
+                    </div>
+                    {isLetterOpen && (
+                        <div className="bg-muted/20">
+                            <div className="p-6 text-base leading-relaxed space-y-4 pt-4 max-h-48 overflow-y-auto">
+                                 <p>Hey Old Stephy, we hope you're reading this from a comfy chair, with a cup of tea, and still bossing everyone around. We just wanted to remind you of a few things:</p>
+                                  <ul className="list-disc list-inside space-y-2 text-muted-foreground">
+                                      <li>We're so proud of the person you've become.</li>
+                                      <li>Remember all the late-night talks, the silly dances, and the dreams we shared?</li>
+                                      <li>Your kindness and strength have always been your superpowers.</li>
+                                      <li>We hope you're still obsessed with a good book.</li>
+                                  </ul>
+                                <p className="text-right font-bold pt-4 border-t">We love you to the moon and back.</p>
+                            </div>
+                        </div>
+                    )}
                 </Card>
             </div>
         </section>
@@ -205,5 +208,7 @@ export function MainContent() {
     </div>
   );
 }
+
+    
 
     
