@@ -1,3 +1,28 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "meme1",
+      "description": "First meme for the carousel",
+      "imageUrl": "https://images.unsplash.com/photo-1588768987479-bcebeefb8a5c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxmdW5ueSUyMGNhdHxlbnwwfHx8fDE3NTkxNTIzMTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "funny cat"
+    },
+    {
+      "id": "meme2",
+      "description": "Second meme for the carousel",
+      "imageUrl": "https://images.unsplash.com/photo-1593301008948-b1512eab0ece?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxyZWxhdGFibGUlMjBxdW90ZXxlbnwwfHx8fDE3NTkxNTIzMTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "relatable quote"
+    },
+    {
+      "id": "meme3",
+      "description": "Third meme for the carousel",
+      "imageUrl": "https://images.unsplash.com/photo-1758600588532-9dc07cfb242a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8cmVhY3Rpb24lMjBmYWNlfGVufDB8fHx8MTc1OTE1MjMxNnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "reaction face"
+    },
+    {
+      "id": "throwback",
+      "description": "A throwback picture of friends",
+      "imageUrl": "https://images.unsplash.com/photo-1588351440168-c89f3afae9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxmcmllbmRzJTIwcG9zaW5nfGVufDB8fHx8MTc1OTE1MjMxNnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "friends posing"
+    }
+  ]
 }

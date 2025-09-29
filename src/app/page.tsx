@@ -1,3 +1,5 @@
+import { BirthdayPage } from '@/components/BirthdayPage';
+
 export default function Home() {
-  return <></>;
+  return <BirthdayPage />;
 }
