@@ -15,7 +15,7 @@ import { MemoryLaneMap } from './MemoryLaneMap';
 import { Confetti } from './Confetti';
 
 const memeImages = PlaceHolderImages.filter(img => img.id.startsWith('meme'));
-const throwbackImage = PlaceHolderImages.find(img => img.id === 'throwback');
+const throwbackImage = { imageUrl: '/throwback.jpeg', description: 'Throwback photo', imageHint: 'A cherished throwback moment' } as const;
 const wishImages = PlaceHolderImages.filter(img => img.id.startsWith('wish'));
 const finalSurpriseImage = PlaceHolderImages.find(img => img.id === 'final-surprise');
 
@@ -188,7 +188,7 @@ export function MainContent() {
         <section className="grid md:grid-cols-2 gap-8 items-center">
             <div className="text-center md:text-left">
                 <h2 className="font-headline text-4xl text-primary-foreground flex items-center justify-center md:justify-start gap-3"><Camera className="h-8 w-8"/> A Moment in Time</h2>
-                <p className="text-muted-foreground mt-2">Let's take a trip down memory lane... Remember this?</p>
+                <p className="text-muted-foreground mt-2">8th Grade Family Get Together... Remember this?</p>
                 
                 {throwbackImage && (
                     <Dialog>
@@ -198,11 +198,11 @@ export function MainContent() {
                                     src={throwbackImage.imageUrl}
                                     alt={throwbackImage.description}
                                     width={600}
-                                    height={800}
+                                    height={600}
                                     data-ai-hint={throwbackImage.imageHint}
                                     className="rounded-md w-full h-auto"
                                 />
-                                <p className="font-headline text-lg mt-3 text-center text-gray-700">The good old days!</p>
+                                <p className="font-headline text-lg mt-3 text-center text-gray-700">December 2018 ❤️</p>
                             </Card>
                         </DialogTrigger>
                         <DialogContent className="max-w-md">
@@ -226,7 +226,7 @@ export function MainContent() {
             
             <section className="bg-card rounded-2xl shadow-xl border p-8 md:p-12 text-center h-full flex flex-col justify-center">
                 <div className="text-center mb-8">
-                    <h2 className="font-headline text-4xl text-primary-foreground flex items-center justify-center gap-3"><MapPin className="text-primary-foreground h-8 w-8"/> Memory Lane Map</h2>
+                    <h2 className="font-headline text-3xl text-primary-foreground flex items-center justify-center gap-2"> Memory Lane Map 📍</h2>
                     <p className="text-muted-foreground mt-2 max-w-xl mx-auto">A trip down memory lane, charting the places and moments that defined our friendship.</p>
                 </div>
                 <MemoryLaneMap />

@@ -42,7 +42,7 @@ const mapPoints = [
   }
 ];
 
-const mapBackgroundImage = PlaceHolderImages.find(img => img.id === 'map-background');
+const mapBackgroundImage = { imageUrl: '/map.webp', description: 'Map background', imageHint: 'Memory lane map background' } as const;
 
 export function MemoryLaneMap() {
   return (
