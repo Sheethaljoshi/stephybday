@@ -19,11 +19,11 @@ const clueAnswers = {
 };
 
 const clues = [
-    { id: 'start', icon: Book, text: "Where did our friendship officially start?", answer: clueAnswers.start },
-    { id: 'cartoon', icon: Film, text: "Which cartoon character do we always associate with you?", answer: clueAnswers.cartoon },
-    { id: 'song', icon: Music, text: "What song did you sing at Arts Fest that we all loved?", answer: clueAnswers.song },
-    { id: 'friend', icon: Users, text: "Who is our friend that’s never been in our class yet?", answer: clueAnswers.friend },
-    { id: 'teacher', icon: Heart, text: "Which teacher loved you the most?", answer: clueAnswers.teacher },
+    { id: 'start', icon: Book, text: "Where did our friendship officially start?" },
+    { id: 'cartoon', icon: Film, text: "Which cartoon character do we always associate with you?" },
+    { id: 'song', icon: Music, text: "What song did you sing at Arts Fest that we all loved?" },
+    { id: 'friend', icon: Users, text: "Who is our friend that’s never been in our class yet?" },
+    { id: 'teacher', icon: Heart, text: "Which teacher loved you the most?" },
 ];
 
 export function BirthdayPage() {
@@ -86,8 +86,8 @@ export function BirthdayPage() {
                       <div className="mx-auto bg-primary/20 p-3 rounded-full mb-4 w-fit">
                           <Gift className="h-10 w-10 text-primary-foreground" />
                       </div>
-                      <CardTitle className="font-headline text-4xl">Stop Being Old: A Birthday Intervention</CardTitle>
-                      <CardDescription className="text-lg px-6">To make sure your brain hasn't turned to mush, answer these questions to unlock your surprise.</CardDescription>
+                      <CardTitle className="font-headline text-4xl">Happy Birthday Stephy!!!!</CardTitle>
+                      <CardDescription className="text-lg px-6">Your birthday surprise waits inside. Answer these questions and yayyy you're in</CardDescription>
                   </CardHeader>
                   <CardContent>
                       <div className="space-y-4 mb-6">
@@ -103,7 +103,7 @@ export function BirthdayPage() {
                                       </div>
                                   </div>
                                   {!correctAnswers[clue.id] && (
-                                    <form onSubmit={(e) => { e.preventDefault(); handleClueSubmit(clue.id, clue.answer); }} className="mt-3 flex gap-2">
+                                    <form onSubmit={(e) => { e.preventDefault(); handleClueSubmit(clue.id, clueAnswers[clue.id as keyof typeof clueAnswers]); }} className="mt-3 flex gap-2">
                                           <Input
                                               type="text"
                                               placeholder="Your answer..."
