@@ -65,6 +65,12 @@
       "description": "Third wish image",
       "imageUrl": "https://images.unsplash.com/photo-1600727039599-ec82c356379c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxocmllbmRzJTIwaHVnfGVufDB8fHx8MTc1OTI1MjQ4MHww&ixlib=rb-4.0.3&q=80&w=1080",
       "imageHint": "friends hug"
+    },
+    {
+      "id": "final-surprise",
+      "description": "A final surprise image",
+      "imageUrl": "https://images.unsplash.com/photo-1522878129833-23f27a3a9e9a?q=80&w=2070&auto=format&fit=crop",
+      "imageHint": "friends together"
     }
   ]
 }

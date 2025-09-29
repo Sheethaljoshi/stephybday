@@ -6,16 +6,19 @@ import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { ScrollArea } from '@/components/ui/scroll-area';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Card, CardContent } from '@/components/ui/card';
-import { Camera, Mail, Sparkles, Wand2, MessageSquareHeart, Heart, GitCommit, ChevronDown, LockKeyhole, FileText, ArrowLeft, MapPin } from 'lucide-react';
+import { Camera, Mail, Sparkles, Wand2, MessageSquareHeart, Heart, GitCommit, ChevronDown, LockKeyhole, FileText, ArrowLeft, MapPin, PartyPopper } from 'lucide-react';
 import { LetterToStephyPage } from './LetterToStephyPage';
 import { MemoryLaneMap } from './MemoryLaneMap';
+import { Confetti } from './Confetti';
+import { AiImageSection } from './AiImageSection';
 
 const memeImages = PlaceHolderImages.filter(img => img.id.startsWith('meme'));
 const throwbackImage = PlaceHolderImages.find(img => img.id === 'throwback');
 const wishImages = PlaceHolderImages.filter(img => img.id.startsWith('wish'));
-
+const finalSurpriseImage = PlaceHolderImages.find(img => img.id === 'final-surprise');
 
 const memeCaptions: { [key: string]: string } = {
   meme1: "This is so us trying to figure out plans.",
@@ -31,8 +34,15 @@ const wishCaptions: { [key: string]: string } = {
 
 
 export function MainContent() {
-  const [isLetterOpen, setIsLetterOpen] = React.useState(false);
   const [showStephyLetter, setShowStephyLetter] = React.useState(false);
+  const [showSurpriseConfetti, setShowSurpriseConfetti] = React.useState(false);
+
+  const handleSurpriseClick = () => {
+    setShowSurpriseConfetti(true);
+    setTimeout(() => {
+        setShowSurpriseConfetti(false);
+    }, 4000);
+  }
 
   if (showStephyLetter) {
     return <LetterToStephyPage onBack={() => setShowStephyLetter(false)} />;
@@ -40,7 +50,7 @@ export function MainContent() {
 
   return (
     <div className="flex flex-col min-h-screen w-full bg-background animate-in fade-in duration-1000 font-body">
-      
+      {showSurpriseConfetti && <Confetti />}
       <header className="text-center py-16 px-4 bg-primary/10">
         <h1 className="font-headline text-5xl md:text-7xl font-bold text-primary-foreground drop-shadow-lg">Happy Birthday, Stephy!</h1>
         <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">Welcome to your digital time capsule, curated with love (and a little bit of sass) by your favorite people.</p>
@@ -224,6 +234,56 @@ export function MainContent() {
             </section>
         </section>
 
+        <section className="bg-card rounded-2xl shadow-xl border p-8 md:p-12 text-center">
+            <h2 className="font-headline text-4xl text-primary-foreground flex items-center justify-center gap-3"><Wand2 className="text-primary-foreground h-8 w-8"/>AI Time Machine</h2>
+            <p className="text-muted-foreground mt-2 max-w-xl mx-auto">Ever wonder what we'll look like in 50 years? Upload a photo of us and let's find out!</p>
+            <div className="mt-6 max-w-sm mx-auto">
+                <AiImageSection />
+            </div>
+        </section>
+
+        <div className="relative text-center">
+            <div className="absolute inset-0 flex items-center" aria-hidden="true">
+                <div className="w-full border-t border-dashed border-border"></div>
+            </div>
+            <div className="relative flex justify-center">
+                <span className="bg-background px-4 text-muted-foreground"><GitCommit /></span>
+            </div>
+        </div>
+
+        <section className="text-center py-12">
+           <h2 className="font-headline text-4xl text-primary-foreground">One Last Thing...</h2>
+            <p className="text-muted-foreground mt-2">Just for you.</p>
+            <Dialog>
+                <DialogTrigger asChild>
+                    <Button size="lg" className="mt-6 text-xl h-14 group" onClick={handleSurpriseClick}>
+                        <PartyPopper className="mr-2 h-6 w-6 transition-transform group-hover:scale-110" />
+                        Click for a Final Surprise
+                    </Button>
+                </DialogTrigger>
+                <DialogContent className="max-w-3xl h-[80vh] flex flex-col">
+                    <DialogHeader>
+                        <DialogTitle>Happy Birthday, from all of us!</DialogTitle>
+                        <DialogDescription>
+                            We love you! Here's to many more years of friendship.
+                        </DialogDescription>
+                    </DialogHeader>
+                    {finalSurpriseImage && (
+                        <ScrollArea className="rounded-md border flex-1">
+                            <Image
+                                src={finalSurpriseImage.imageUrl}
+                                alt={finalSurpriseImage.description}
+                                width={1200}
+                                height={1800}
+                                data-ai-hint={finalSurpriseImage.imageHint}
+                                className="w-full h-auto"
+                            />
+                        </ScrollArea>
+                    )}
+                </DialogContent>
+            </Dialog>
+        </section>
+
       </main>
       
        <footer className="text-center py-8 mt-12 px-4 bg-primary/10">
@@ -233,5 +293,3 @@ export function MainContent() {
     </div>
   );
 }
-
-    
