@@ -14,21 +14,38 @@ import { LetterToStephyPage } from './LetterToStephyPage';
 import { MemoryLaneMap } from './MemoryLaneMap';
 import { Confetti } from './Confetti';
 
-const memeImages = PlaceHolderImages.filter(img => img.id.startsWith('meme'));
+
+const memeImages = [
+  { id: 'meme1', imageUrl: '/1.jpeg', description: 'Meme 1', imageHint: 'funny' },
+  { id: 'meme2', imageUrl: '/2.jpeg', description: 'Meme 2', imageHint: 'funny' },
+  { id: 'meme3', imageUrl: '/3.jpeg', description: 'Meme 3', imageHint: 'funny' },
+  { id: 'meme4', imageUrl: '/4.jpeg', description: 'Meme 4', imageHint: 'funny' },
+  { id: 'meme5', imageUrl: '/5.jpeg', description: 'Meme 5', imageHint: 'funny' },
+  { id: 'meme6', imageUrl: '/6.jpg', description: 'Meme 6', imageHint: 'funny' },
+] as const;
 const throwbackImage = { imageUrl: '/throwback.jpeg', description: 'Throwback photo', imageHint: 'A cherished throwback moment' } as const;
-const wishImages = PlaceHolderImages.filter(img => img.id.startsWith('wish'));
-const finalSurpriseImage = PlaceHolderImages.find(img => img.id === 'final-surprise');
+const wishImages = [
+  { id: 'wish1', imageUrl: '/a.jpeg', description: 'Wish card 1', imageHint: 'greeting' },
+  { id: 'wish2', imageUrl: '/b.jpeg', description: 'Wish card 2', imageHint: 'greeting' },
+  { id: 'wish3', imageUrl: '/c.jpeg', description: 'Wish card 3', imageHint: 'greeting' },
+  { id: 'wish4', imageUrl: '/d.jpeg', description: 'Wish card 4', imageHint: 'greeting' },
+] as const;
+const finalSurpriseImage = { imageUrl: '/surprise.jpeg', description: 'Final surprise collage', imageHint: 'A celebratory surprise image' } as const;
 
 const memeCaptions: { [key: string]: string } = {
-  meme1: "This is so us trying to figure out plans.",
-  meme2: "Her face when she sees a cute dog.",
-  meme3: "When the gossip is just too good.",
+  meme1: "Sometimes I think...",
+  meme2: "Not wearing my glasses anymore.",
+  meme3: "Ready for war (socializing).",
+  meme4: "People with glasses are hot btw.",
+  meme5: "What did you study? Architecture.",
+  meme6: "I studied abroad once.",
 };
 
 const wishCaptions: { [key: string]: string } = {
   wish1: "Wishing you a lifetime of happiness, laughter, and endless adventures. Happy Birthday!",
   wish2: "To our dearest friend, may your future be as bright and beautiful as your spirit. We love you!",
   wish3: "Happy Birthday! Never forget how much you're loved. Here's to many more years of amazing memories.",
+  wish4: "More love, more memories, and more joy in the years ahead!",
 };
 
 
@@ -75,9 +92,7 @@ export function MainContent() {
                              data-ai-hint={wish.imageHint}
                              className="object-cover w-full h-full"
                            />
-                            <div className="absolute inset-0 flex items-center justify-center p-8 bg-black/50">
-                             <p className="font-headline text-white text-2xl md:text-3xl leading-snug text-center drop-shadow-md">{wishCaptions[wish.id]}</p>
-                         </div>
+                            
                          </CardContent>
                      </div>
                    </CarouselItem>
@@ -145,25 +160,25 @@ export function MainContent() {
         
         <section className="bg-card rounded-2xl shadow-xl border p-8 md:p-12">
             <div className="text-center mb-8">
-                <h2 className="font-headline text-4xl text-primary-foreground flex items-center justify-center gap-3"><Sparkles className="text-primary-foreground h-8 w-8"/>Meme Hall of Fame</h2>
-                <p className="text-muted-foreground mt-2 max-w-xl mx-auto">A collection of moments that live in our heads rent-free, because normal photos are too mainstream.</p>
+                <h2 className="font-headline text-4xl text-primary-foreground flex items-center justify-center gap-3"><Sparkles className="text-primary-foreground h-8 w-8"/>Buffy's Meme Hall of Fame</h2>
+                <p className="text-muted-foreground mt-2 max-w-xl mx-auto">We tried writing feelings, but then we remembered memes exist.</p>
             </div>
              <Carousel className="w-full max-w-xl mx-auto" opts={{ loop: true }}>
                <CarouselContent>
                  {memeImages.map((meme) => (
                    <CarouselItem key={meme.id} className="text-center">
                      <div className="p-1">
-                         <CardContent className="flex aspect-video items-center justify-center p-0 relative rounded-lg overflow-hidden border">
-                           <Image
-                             src={meme.imageUrl}
-                             alt={meme.description}
-                             width={600}
-                             height={400}
-                             data-ai-hint={meme.imageHint}
-                             className="object-cover w-full h-full"
-                           />
+                        <CardContent className="flex aspect-video items-center justify-center p-0 relative rounded-lg overflow-hidden border bg-black">
+                          <Image
+                            src={meme.imageUrl}
+                            alt={meme.description}
+                            fill
+                            sizes="(max-width: 768px) 100vw, 600px"
+                            data-ai-hint={meme.imageHint}
+                            className="object-contain w-full h-full"
+                          />
                             <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
-                             <p className="font-semibold text-white text-lg">{memeCaptions[meme.id]}</p>
+                             
                          </div>
                          </CardContent>
                      </div>
@@ -254,7 +269,7 @@ export function MainContent() {
                 </DialogTrigger>
                 <DialogContent className="max-w-3xl h-[80vh] flex flex-col">
                     <DialogHeader>
-                        <DialogTitle>Happy Birthday, from all of us!</DialogTitle>
+                        <DialogTitle>Happy Birthday, from all of us - with Maria's extra special designing!</DialogTitle>
                         <DialogDescription>
                             We love you! Here's to many more years of friendship.
                         </DialogDescription>

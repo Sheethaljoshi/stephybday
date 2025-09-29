@@ -12,32 +12,32 @@ import { MapPin, Sparkles } from 'lucide-react';
 const mapPoints = [
   {
     id: 'school',
-    title: 'Where It All Began',
-    description: 'The countless hours spent in that stuffy classroom... Who knew it would lead to this? This is where our story officially started.',
+    title: 'Covid Google Meet',
+    description: 'Bro, when you did the moonwalk in the cultural program back in 11th or 12th, you shocked us all — we were like damn, girl, thats insane!',
     position: { top: '30%', left: '25%' },
   },
   {
     id: 'cafe',
-    title: 'Our Favorite Cafe',
-    description: "The official headquarters for all our gossip sessions, late-night study crises, and bubble tea emergencies. We've probably spent a fortune here.",
+    title: 'Staff Room Meets',
+    description: "Omg, that log book was such a pain! Sheep always forgot it, and we’d be running here and there, only to bump into you — the 10B log book leader.",
     position: { top: '65%', left: '55%' },
   },
   {
     id: 'trip',
-    title: 'That Unforgettable Trip',
-    description: 'Remember that one trip? The one with all the inside jokes we still laugh about. It was chaotic, it was perfect.',
+    title: 'Bathroom Secrets',
+    description: 'Remember how we used to take timed washroom breaks — first two people would go, then one, and then the rest followed as if the entire school was dying to find out if we went to the washroom together. Also locking our beloved Ann Maria in the bathroom and running away is an official core memory along with our fashion shows!',
     position: { top: '40%', left: '78%' },
   },
   {
     id: 'library',
-    title: 'The Library',
-    description: "Our second home during exam season. Fueled by coffee and panic, we somehow made it through. So many whispers and shared notes!",
+    title: '6-B',
+    description: "Jessy Ma'am Cofounded MAASC - If she didnt take us 3 loners (Sheethal(Me), You and Catherine) and make us sit together - who knows where we would be now? ",
     position: { top: '15%', left: '50%' },
   },
   {
     id: 'park',
-    title: 'The Park',
-    description: "Those lazy afternoons when we just needed to escape and talk about everything and nothing. The best place to de-stress.",
+    title: 'Platform Music Sessions',
+    description: "Since everyone loved your voice, and loved you singing on the platform, calling you our friend was such a huge flex!",
     position: { top: '80%', left: '20%' },
   }
 ];
