@@ -125,14 +125,20 @@ export function MainContent() {
                   <DialogContent className="max-w-lg">
                     <DialogHeader>
                         <DialogTitle className="font-headline text-2xl flex items-center gap-3"><Mail className="text-primary-foreground h-6 w-6"/> To Your Future Hubby</DialogTitle>
-                        <DialogDescription>A top-secret message for his eyes only.</DialogDescription>
+                        <DialogDescription>A top-secret message.</DialogDescription>
                     </DialogHeader>
                      <div className="space-y-4 pt-4 text-base leading-relaxed">
-                        <p>Dear Future Mr. Stephy,</p>
-                        <p>You've hit the jackpot! You're with someone who's not only incredibly smart and beautiful but also has the biggest heart. She's the kind of person who will laugh at your dumbest jokes and support your wildest dreams.</p>
-                        <p>She might steal the covers and leave her bobby pins everywhere, but she'll also make you the happiest person on Earth.</p>
-                        <p className="text-sm text-muted-foreground pt-4 border-t">P.S. Rules: 1. Let her have the last slice of pizza. 2. Never question her love for bubble tea. 3. Agree that her friends (us) are awesome.</p>
-                        <p className="mt-4 font-bold text-right">Good luck, you'll need it.<Heart className="inline h-4 w-4 ml-1 text-red-500 fill-red-500"/></p>
+                        <p>Dear future husband of Buffy,</p>
+                        <p>Get ready… because you’re dealing with her now. We take no responsibility for her being like this. As you can see, she’s literally the sweetest and friendliest person you’ll ever meet! She’s super shy and cute, but also loves annoying us with her endless questions. Her gossip processing speed is kinda slow, but her brainpower? Bright as hell — don’t even try comparing her to Einstein, she’s in her own league.</p>
+                        <p>
+                          She will binge-watch shows with you forever, reads like a bookworm, and omg… her curiosity is next level. She will try to find answers to EVERYTHING. She’s strong, mature, and rational—makes smart decisions and always stays true to her heart. She’s genuine, amazing, and will love you till the end. But beware… you hurt her, and we WILL take her back. She’s the most precious person ever.
+                          </p>
+                          <p>
+                          She’s independent, adapts to change like a boss—I mean, she literally moved to London at 18 all alone… no help, nothing. Legendary move only. Heads up: you might have to say things twice for her to register… but once she does, omg she will NEVER forget. She can literally tell you the exact date and time of stuff, so don’t do anything suspicious.
+                          </p>
+                        <p className="text-sm text-muted-foreground pt-4 border-t">
+                        P.S - And just so you know… if you mess with her, remember this: she once won a prize for shot put—this girl can throw an 8kg ball like it’s nothing. So tread carefully bro.</p>
+                        <p className="mt-4 font-bold text-right">Good luck, you'll need it<Heart className="inline h-4 w-4 ml-1 text-red-500 fill-red-500"/></p>
                     </div>
                   </DialogContent>
                 </Dialog>
