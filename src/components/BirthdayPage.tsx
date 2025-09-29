@@ -86,8 +86,8 @@ export function BirthdayPage() {
                       <div className="mx-auto bg-primary/20 p-3 rounded-full mb-4 w-fit">
                           <Gift className="h-10 w-10 text-primary-foreground" />
                       </div>
-                      <CardTitle className="font-headline text-4xl">The Friendship Gauntlet</CardTitle>
-                      <CardDescription className="text-lg">Prove your worthiness to unlock your birthday surprise!</CardDescription>
+                      <CardTitle className="font-headline text-4xl">Stop Being Old: A Birthday Intervention</CardTitle>
+                      <CardDescription className="text-lg px-6">To make sure your brain hasn't turned to mush, answer these questions to unlock your surprise.</CardDescription>
                   </CardHeader>
                   <CardContent>
                       <div className="space-y-4 mb-6">
