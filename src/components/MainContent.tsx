@@ -68,7 +68,7 @@ export function MainContent() {
     <div className="flex flex-col min-h-screen w-full bg-background animate-in fade-in duration-1000 font-body">
       {showSurpriseConfetti && <Confetti />}
       <header className="text-center py-16 px-4 bg-primary/10">
-        <h1 className="font-headline text-5xl md:text-7xl font-bold text-primary-foreground drop-shadow-lg">Happy Birthday, Stephy!</h1>
+        <h1 className="font-headline text-5xl md:text-7xl font-bold text-primary-foreground drop-shadow-lg">Happy Birthday, Stephy💖</h1>
         <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">Welcome to your digital time capsule, curated with love (and a little bit of sass) by your favorite people.</p>
       </header>
       
